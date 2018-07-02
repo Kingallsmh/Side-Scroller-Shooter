@@ -152,9 +152,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 212603334363507602, guid: fcf3d7d3f0e5bf64a8e7396787c0facf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a83e53ae5e9837847bc04e715ef4acdb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcf3d7d3f0e5bf64a8e7396787c0facf, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &230428037 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4995285213304166, guid: 7cd86cc54881f454c839c30e9d1f59ae,
+    type: 2}
+  m_PrefabInternal: {fileID: 987277675}
 --- !u!4 &313852193 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4146477206739776, guid: 7c5dfd356be87654aa0f22aafe96dd83,
@@ -173,7 +183,7 @@ GameObject:
   - component: {fileID: 386506247}
   m_Layer: 0
   m_Name: Chain1 (2)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,7 +296,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 212828105961414728, guid: 0465be9e8a6411d4898dcf57c39086c0,
+    - target: {fileID: 212957180841661872, guid: 0465be9e8a6411d4898dcf57c39086c0,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -386,6 +396,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &524826260 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1989974322234062, guid: fcf3d7d3f0e5bf64a8e7396787c0facf,
+    type: 2}
+  m_PrefabInternal: {fileID: 185816838}
+--- !u!114 &524826261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524826260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292c8a228d6d8ae44a32d4cdca26dede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &524826262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524826260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676ec1499ebb72b45b075e29893c9ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  input: {x: 0, y: 0}
+  sprite: {fileID: 2100766432}
+  isInvincible: 0
+  muzzle: {fileID: 230428037}
+  bulletPrefab: {fileID: 1962930024487024, guid: 66de9f70429fe864e9ebe4087e71104d,
+    type: 2}
+  timeToFire: 0
+  cooldownTime: 1
+  chainPart: {fileID: 0}
 --- !u!1 &651932651
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +446,7 @@ GameObject:
   - component: {fileID: 651932653}
   m_Layer: 0
   m_Name: Chain1 (3)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,6 +559,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212841340684130378, guid: 3e441e05ea29df349bbb0f7de389a0df,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212841340684130378, guid: 3e441e05ea29df349bbb0f7de389a0df,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212841340684130378, guid: 3e441e05ea29df349bbb0f7de389a0df,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212841340684130378, guid: 3e441e05ea29df349bbb0f7de389a0df,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212841340684130378, guid: 3e441e05ea29df349bbb0f7de389a0df,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a83e53ae5e9837847bc04e715ef4acdb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e441e05ea29df349bbb0f7de389a0df, type: 2}
   m_IsPrefabParent: 0
@@ -520,6 +592,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4858498860916576, guid: 7c5dfd356be87654aa0f22aafe96dd83,
     type: 2}
   m_PrefabInternal: {fileID: 1590510311}
+--- !u!212 &881598128 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212841340684130378, guid: 3e441e05ea29df349bbb0f7de389a0df,
+    type: 2}
+  m_PrefabInternal: {fileID: 682562618}
 --- !u!1001 &987277675
 Prefab:
   m_ObjectHideFlags: 0
@@ -559,11 +636,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 212412659361366618, guid: 7cd86cc54881f454c839c30e9d1f59ae,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f56da4d9ae27c0344bb725f40f85a78b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cd86cc54881f454c839c30e9d1f59ae, type: 2}
   m_IsPrefabParent: 0
@@ -618,7 +690,7 @@ GameObject:
   - component: {fileID: 1391286547}
   m_Layer: 0
   m_Name: Chain1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -762,7 +834,7 @@ GameObject:
   - component: {fileID: 1561347756}
   m_Layer: 0
   m_Name: Chain1 (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -930,10 +1002,11 @@ GameObject:
   - component: {fileID: 1593267688}
   - component: {fileID: 1593267686}
   - component: {fileID: 1593267690}
-  - component: {fileID: 1593267689}
+  - component: {fileID: 1593267687}
+  - component: {fileID: 1593267691}
   m_Layer: 0
   m_Name: Player Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -958,6 +1031,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1593267687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1593267685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335ba10f5b25f9f49b405b3bf4a520cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 1
+  MaxHp: 10
+  Atk: 1
 --- !u!4 &1593267688
 Transform:
   m_ObjectHideFlags: 0
@@ -972,25 +1059,6 @@ Transform:
   m_Father: {fileID: 1243142742}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1593267689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1593267685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f8b93eff2443c747873646abf8d4133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 300
-  input: {x: 0, y: 0}
-  muzzle: {fileID: 2062659124}
-  bulletPrefab: {fileID: 1495693369499892, guid: 4dcf58288fae36c4c87a3a13452b50dc,
-    type: 2}
-  timeToFire: 0
-  cooldownTime: 0.5
-  chainPart: {fileID: 1391286547}
 --- !u!114 &1593267690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,6 +1070,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47333590f3f515c4e9d7d8a840b8c8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1593267691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1593267685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5d62b6ef4aef649b76fc011ab1d127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 300
+  input: {x: 0, y: 0}
+  sprite: {fileID: 881598128}
+  isInvincible: 0
+  muzzle: {fileID: 2062659124}
+  bulletPrefab: {fileID: 1495693369499892, guid: 4dcf58288fae36c4c87a3a13452b50dc,
+    type: 2}
+  timeToFire: 0
+  cooldownTime: 0.5
+  chainPart: {fileID: 1391286547}
 --- !u!1001 &1748706327
 Prefab:
   m_ObjectHideFlags: 0
@@ -1167,16 +1256,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 212257738705640554, guid: f8ae20e141bb6ed4d9f8bacef90170c9,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f56da4d9ae27c0344bb725f40f85a78b, type: 2}
-    - target: {fileID: 212906290694028058, guid: f8ae20e141bb6ed4d9f8bacef90170c9,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f56da4d9ae27c0344bb725f40f85a78b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8ae20e141bb6ed4d9f8bacef90170c9, type: 2}
   m_IsPrefabParent: 0
@@ -1185,3 +1264,8 @@ Transform:
   m_PrefabParentObject: {fileID: 4168644962904342, guid: 3e441e05ea29df349bbb0f7de389a0df,
     type: 2}
   m_PrefabInternal: {fileID: 682562618}
+--- !u!212 &2100766432 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212603334363507602, guid: fcf3d7d3f0e5bf64a8e7396787c0facf,
+    type: 2}
+  m_PrefabInternal: {fileID: 185816838}

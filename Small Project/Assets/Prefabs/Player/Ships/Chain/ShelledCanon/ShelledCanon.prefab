@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4146477206739776}
   - component: {fileID: 95598257149959822}
   - component: {fileID: 58763056627489270}
+  - component: {fileID: 114144135951692572}
   m_Layer: 0
   m_Name: ShelledCanon
   m_TagString: Untagged
@@ -134,6 +135,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114144135951692572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825532711423742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422120763945b6049b96b86b62a169db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDamage: 0
+  isDamagable: 1
+  tagToIgnore: Player
 --- !u!212 &212061831116255808
 SpriteRenderer:
   m_ObjectHideFlags: 1

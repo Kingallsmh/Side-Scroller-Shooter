@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4153277988127602}
   - component: {fileID: 95028438502930666}
   - component: {fileID: 58190713065271420}
+  - component: {fileID: 114787516099384424}
   m_Layer: 0
   m_Name: DragonShip
   m_TagString: Untagged
@@ -180,6 +181,20 @@ MonoBehaviour:
   currentColor: {r: 0.26666668, g: 0.73333335, b: 0.9921569, a: 1}
   secondColor: {r: 0.1596406, g: 0.27702338, b: 0.601, a: 1}
   timeToLerp: 1
+--- !u!114 &114787516099384424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310554534444426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422120763945b6049b96b86b62a169db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDamage: 0
+  isDamagable: 1
+  tagToIgnore: Player
 --- !u!212 &212679847708173138
 SpriteRenderer:
   m_ObjectHideFlags: 1

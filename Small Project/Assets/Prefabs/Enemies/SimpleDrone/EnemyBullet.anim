@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SimpleDroneIdleAnim
+  m_Name: EnemyBullet
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,11 +19,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300004, guid: 478185f7c8047074a8b52a2cfe0b6598, type: 3}
+      value: {fileID: 21300004, guid: cf96cde3a34d8a24f85c603b10c0e939, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300006, guid: 478185f7c8047074a8b52a2cfe0b6598, type: 3}
+      value: {fileID: 21300006, guid: cf96cde3a34d8a24f85c603b10c0e939, type: 3}
     attribute: m_Sprite
-    path: SimpleDrone1
+    path: 
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 12
@@ -34,15 +34,15 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3998882303
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300004, guid: 478185f7c8047074a8b52a2cfe0b6598, type: 3}
-    - {fileID: 21300006, guid: 478185f7c8047074a8b52a2cfe0b6598, type: 3}
+    - {fileID: 21300004, guid: cf96cde3a34d8a24f85c603b10c0e939, type: 3}
+    - {fileID: 21300006, guid: cf96cde3a34d8a24f85c603b10c0e939, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

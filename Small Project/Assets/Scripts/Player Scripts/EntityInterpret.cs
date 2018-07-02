@@ -2,27 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityInterpret : MonoBehaviour {
+public abstract class EntityInterpret : MonoBehaviour {
 
-    PlayerController controller;
-    Animator anim;
-    Rigidbody2D rb;
+    protected ShipStats stats;
+    protected BaseController controller;
+    protected Animator anim;
+    protected Rigidbody2D rb;
     public float speed = 10;
     public Vector2 input;
+
+    public SpriteRenderer sprite;
+    MaterialPropertyBlock props;
+    public bool isInvincible = false;
 
     [Header("Bullet Properties")]
     public Transform muzzle;
     public GameObject bulletPrefab;
     public float timeToFire = 0;
     public float cooldownTime = 0.3f;
-    bool onCooldown = false;
+    protected bool onCooldown = false;
 
     //Chain properties
     public ChainInterpret chainPart;
 
     // Use this for initialization
     void Start() {
-        controller = GetComponent<PlayerController>();
+        props = new MaterialPropertyBlock();
+        stats = GetComponent<ShipStats>();
+        controller = GetComponent<BaseController>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -69,13 +76,30 @@ public class EntityInterpret : MonoBehaviour {
         }
     }
 
-    void HighlightShift() {
-        //TODO color shift
+    public virtual void TakeDamage(int dmg) {
+        if (!isInvincible)
+        {
+            StartCoroutine(DamageFlash(5));
+            stats.AdjustHealth(-dmg);
+        }        
     }
 
-    void TakeDamage() {
-        //TODO rapid color change
+    protected IEnumerator DamageFlash(int totalCycles)
+    {
+        int currentCycle = 0;
+        isInvincible = true;
+        while (currentCycle < totalCycles)
+        {
+            sprite.GetPropertyBlock(props);
+            props.SetFloat("_FlashAmount", 1);
+            sprite.SetPropertyBlock(props);            
+            yield return new WaitForSeconds(0.1f);
+            sprite.GetPropertyBlock(props);
+            props.SetFloat("_FlashAmount", 0);
+            sprite.SetPropertyBlock(props);
+            currentCycle++;
+            yield return new WaitForSeconds(0.1f);
+        }
+        isInvincible = false;
     }
-
-    
 }
