@@ -32,7 +32,10 @@ public class HitBox : MonoBehaviour {
             if(bullet && isDamagable)
             {
                 Debug.Log(gameObject + " take dmg from bullet!");
-                interpret.TakeDamage(bullet.dmg);
+                if (interpret.TakeDamage(bullet.dmg)) {
+                    Debug.Log("Yup");
+                    Destroy(bullet.gameObject);
+                }
                 return;
             }
         }

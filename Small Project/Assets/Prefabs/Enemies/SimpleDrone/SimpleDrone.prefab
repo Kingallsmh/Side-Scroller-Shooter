@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 95096076514828534}
   - component: {fileID: 114256817031213570}
   - component: {fileID: 114498754166547734}
+  - component: {fileID: 114062963333157382}
   m_Layer: 0
   m_Name: SimpleDrone
   m_TagString: Enemy
@@ -168,6 +169,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114062963333157382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852659327551372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335ba10f5b25f9f49b405b3bf4a520cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 1
+  MaxHp: 1
+  Atk: 1
 --- !u!114 &114256817031213570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,7 +289,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f56da4d9ae27c0344bb725f40f85a78b, type: 2}
+  - {fileID: 2100000, guid: a83e53ae5e9837847bc04e715ef4acdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

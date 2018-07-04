@@ -39,6 +39,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4927859044213838}
   - component: {fileID: 50400247177329944}
+  - component: {fileID: 114483878809294428}
+  - component: {fileID: 114939586837181598}
+  - component: {fileID: 114845398374263892}
   m_Layer: 0
   m_Name: RamDrone
   m_TagString: Enemy
@@ -136,6 +139,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114483878809294428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989974322234062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292c8a228d6d8ae44a32d4cdca26dede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114496348998985854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,6 +164,40 @@ MonoBehaviour:
   canDamage: 1
   isDamagable: 1
   tagToIgnore: Enemy
+--- !u!114 &114845398374263892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989974322234062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335ba10f5b25f9f49b405b3bf4a520cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 1
+  MaxHp: 1
+  Atk: 1
+--- !u!114 &114939586837181598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989974322234062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676ec1499ebb72b45b075e29893c9ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  input: {x: 0, y: 0}
+  sprite: {fileID: 212603334363507602}
+  isInvincible: 0
+  muzzle: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  timeToFire: 0
+  cooldownTime: 1
+  chainPart: {fileID: 0}
 --- !u!212 &212603334363507602
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -165,7 +213,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f56da4d9ae27c0344bb725f40f85a78b, type: 2}
+  - {fileID: 2100000, guid: a83e53ae5e9837847bc04e715ef4acdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

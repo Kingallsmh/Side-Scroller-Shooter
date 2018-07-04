@@ -152,19 +152,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 212603334363507602, guid: fcf3d7d3f0e5bf64a8e7396787c0facf,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a83e53ae5e9837847bc04e715ef4acdb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcf3d7d3f0e5bf64a8e7396787c0facf, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &230428037 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4995285213304166, guid: 7cd86cc54881f454c839c30e9d1f59ae,
-    type: 2}
-  m_PrefabInternal: {fileID: 987277675}
 --- !u!4 &313852193 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4146477206739776, guid: 7c5dfd356be87654aa0f22aafe96dd83,
@@ -296,11 +286,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 212957180841661872, guid: 0465be9e8a6411d4898dcf57c39086c0,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f56da4d9ae27c0344bb725f40f85a78b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0465be9e8a6411d4898dcf57c39086c0, type: 2}
   m_IsPrefabParent: 0
@@ -396,43 +381,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &524826260 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1989974322234062, guid: fcf3d7d3f0e5bf64a8e7396787c0facf,
-    type: 2}
-  m_PrefabInternal: {fileID: 185816838}
---- !u!114 &524826261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 524826260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 292c8a228d6d8ae44a32d4cdca26dede, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &524826262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 524826260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 676ec1499ebb72b45b075e29893c9ba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  input: {x: 0, y: 0}
-  sprite: {fileID: 2100766432}
-  isInvincible: 0
-  muzzle: {fileID: 230428037}
-  bulletPrefab: {fileID: 1962930024487024, guid: 66de9f70429fe864e9ebe4087e71104d,
-    type: 2}
-  timeToFire: 0
-  cooldownTime: 1
-  chainPart: {fileID: 0}
 --- !u!1 &651932651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,8 +1212,3 @@ Transform:
   m_PrefabParentObject: {fileID: 4168644962904342, guid: 3e441e05ea29df349bbb0f7de389a0df,
     type: 2}
   m_PrefabInternal: {fileID: 682562618}
---- !u!212 &2100766432 stripped
-SpriteRenderer:
-  m_PrefabParentObject: {fileID: 212603334363507602, guid: fcf3d7d3f0e5bf64a8e7396787c0facf,
-    type: 2}
-  m_PrefabInternal: {fileID: 185816838}

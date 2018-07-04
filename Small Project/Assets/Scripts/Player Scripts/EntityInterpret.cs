@@ -38,7 +38,9 @@ public abstract class EntityInterpret : MonoBehaviour {
     void Update() {
         //Receive input in update
         controller.GatherInput();
-        ButtonPress();
+        if (bulletPrefab) {
+            ButtonPress();
+        }        
     }
 
     private void FixedUpdate() {
@@ -76,12 +78,16 @@ public abstract class EntityInterpret : MonoBehaviour {
         }
     }
 
-    public virtual void TakeDamage(int dmg) {
+    public virtual bool TakeDamage(int dmg) {
         if (!isInvincible)
         {
             StartCoroutine(DamageFlash(5));
             stats.AdjustHealth(-dmg);
-        }        
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     protected IEnumerator DamageFlash(int totalCycles)
