@@ -108,4 +108,8 @@ public class ColorControl : MonoBehaviour {
             LerpUpdateColor(color, transform.GetChild(i).gameObject);
         }
     }
+
+    public void UpdateColorFromDamage(float percent) {
+        //Color newColor = new Color(percent, )
+    }
 }

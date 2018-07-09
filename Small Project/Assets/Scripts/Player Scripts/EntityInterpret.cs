@@ -6,6 +6,7 @@ public abstract class EntityInterpret : MonoBehaviour {
 
     private ShipStats stats;
     protected BaseController controller;
+    bool controllerPaused = false;
     protected Animator anim;
     protected Rigidbody2D rb;
     public float speed = 10;
@@ -50,6 +51,7 @@ public abstract class EntityInterpret : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(!controllerPaused)
         UpdateEntity();
     }
 
@@ -64,6 +66,7 @@ public abstract class EntityInterpret : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if(!controllerPaused)
         FixedUpdateEntity();
     }
 
@@ -130,6 +133,8 @@ public abstract class EntityInterpret : MonoBehaviour {
     {
         int currentCycle = 0;
         isInvincible = true;
+        controllerPaused = true;
+        
         float soundTime = 0;
         while (currentCycle < totalCycles)
         {

@@ -27,7 +27,7 @@ public class HitBox : MonoBehaviour {
             }
             //Bullet Collision
             BaseBullet bullet = collision.gameObject.GetComponent<BaseBullet>();
-            if(bullet && isDamagable)
+            if(bullet && isDamagable && !interpret.Stats.IsDead())
             {
                 interpret.TakeDamage(bullet.dmg);
                 Destroy(bullet.gameObject);
