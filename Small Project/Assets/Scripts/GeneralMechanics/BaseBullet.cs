@@ -12,7 +12,7 @@ public class BaseBullet : MonoBehaviour {
 
     public enum BulletType
     {
-        Standard, Penetrate, Bounce, Chain
+        Standard, Penetrate, Bounce, Chain, Charge
     }
 
 	// Use this for initialization

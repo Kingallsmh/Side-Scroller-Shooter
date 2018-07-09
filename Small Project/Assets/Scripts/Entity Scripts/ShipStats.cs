@@ -18,4 +18,9 @@ public class ShipStats : MonoBehaviour {
         Hp += amount;
         Mathf.Clamp(Hp, 0, MaxHp);
     }
+
+    public bool IsDead()
+    {
+        return Hp == 0;
+    }
 }

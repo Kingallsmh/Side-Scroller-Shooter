@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDamage: 0
-  isDamagable: 1
+  isDamagable: 0
   tagToIgnore: Player
 --- !u!212 &212713060469233726
 SpriteRenderer:
@@ -164,7 +164,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f56da4d9ae27c0344bb725f40f85a78b, type: 2}
+  - {fileID: 2100000, guid: a83e53ae5e9837847bc04e715ef4acdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

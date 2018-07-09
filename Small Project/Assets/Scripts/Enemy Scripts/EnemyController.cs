@@ -18,6 +18,6 @@ public class EnemyController : BaseController {
     public override Vector2 GetDirectionInput(int numOfInput)
     {
         //throw new System.NotImplementedException();
-        return Vector2.zero;
+        return new Vector2(-1, 0);
     }
 }
