@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerInterpret : EntityInterpret {
 
+    public ColorControl highlightControl;
+
     public override bool TakeDamage(int dmg)
     {
         if (!isInvincible)
         {
             StartCoroutine(DamageFlash(5));
             Stats.AdjustHealth(-dmg);
+            highlightControl.UpdateColorFromDamage(Stats.GetHealthPercentage());
+            Debug.Log("HP%:" + Stats.GetHealthPercentage());
             source.PlayOneShot(hitSound, 1);
             if (Stats.IsDead())
             {

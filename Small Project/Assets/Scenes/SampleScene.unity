@@ -576,7 +576,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1310554534444426, guid: 3e441e05ea29df349bbb0f7de389a0df, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212679847708173138, guid: 3e441e05ea29df349bbb0f7de389a0df,
         type: 2}
@@ -622,6 +622,16 @@ Prefab:
         type: 2}
       propertyPath: currentColor.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212841340684130378, guid: 3e441e05ea29df349bbb0f7de389a0df,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a83e53ae5e9837847bc04e715ef4acdb, type: 2}
+    - target: {fileID: 114311375337282390, guid: 3e441e05ea29df349bbb0f7de389a0df,
+        type: 2}
+      propertyPath: maxLerpTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e441e05ea29df349bbb0f7de389a0df, type: 2}
@@ -699,6 +709,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4352233219455650, guid: 4565b1a99e0ddf84ea2afc7dbd2ead71,
     type: 2}
   m_PrefabInternal: {fileID: 1580877963}
+--- !u!114 &490013584 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114233148729188716, guid: f9955716ee05ef74193b8553299f0859,
+    type: 2}
+  m_PrefabInternal: {fileID: 1128450898}
+  m_Script: {fileID: 11500000, guid: 7db0d06374c2a0c44bcb053ff127638a, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,7 +1203,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1721941673227712, guid: f9955716ee05ef74193b8553299f0859, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212616689259402914, guid: f9955716ee05ef74193b8553299f0859,
         type: 2}
@@ -2119,6 +2135,7 @@ MonoBehaviour:
   cooldownTime: 0.5
   hitSound: {fileID: 8300000, guid: e0c0297c3d4dbd24997f94318423f1f7, type: 3}
   chainPart: {fileID: 1391286547}
+  highlightControl: {fileID: 490013584}
 --- !u!1 &1663733771
 GameObject:
   m_ObjectHideFlags: 0

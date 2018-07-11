@@ -12,10 +12,11 @@ public class ColorControl : MonoBehaviour {
     public Color currentColor = new Color(1, 1, 1);
     public Color secondColor = new Color(0, 0, 0);
     SpriteRenderer myRend;
-    public float timeToLerp = 2;
+    public float timeToLerp = 2, maxLerpTime = 1;
 
     // Use this for initialization
     void Start() {
+        timeToLerp = maxLerpTime;
         myRend = GetComponent<SpriteRenderer>();
         StartCoroutine(UpdateLoop());
     }
@@ -110,6 +111,17 @@ public class ColorControl : MonoBehaviour {
     }
 
     public void UpdateColorFromDamage(float percent) {
-        //Color newColor = new Color(percent, )
+        float red = 0;
+        float green = 1;
+        if(percent > 0.5f) {
+            red = Mathf.Clamp(0.1f + (1-percent)*2, 0, 1);
+        }
+        else {
+            red = 1;
+            green = Mathf.Clamp((percent * 2) - 0.1f, 0, 1);
+        }
+        Color newColor = new Color(red, green, 0);
+        currentColor = newColor;
+        timeToLerp = maxLerpTime * percent;
     }
 }

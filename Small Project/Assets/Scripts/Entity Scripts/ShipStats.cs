@@ -23,4 +23,8 @@ public class ShipStats : MonoBehaviour {
     {
         return Hp == 0;
     }
+
+    public float GetHealthPercentage() {
+        return (float)(Hp) / (float)(MaxHp);
+    }
 }
