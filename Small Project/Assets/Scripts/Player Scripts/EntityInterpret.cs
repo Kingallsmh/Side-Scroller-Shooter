@@ -32,11 +32,19 @@ public abstract class EntityInterpret : MonoBehaviour {
     public AudioClip hitSound;
 
     //Chain properties
-    public ChainInterpret chainPart;    
+    public List<ChainInterpret> nextChainList;    
 
     // Use this for initialization
     void Start() {
-        InitEntity();
+        InitEntity();        
+    }
+
+    protected void AttachJointToPreviousChain() {
+        if(nextChainList != null) {
+            for(int i = 0; i < nextChainList.Count; i++) {
+                nextChainList[i].GetComponent<SpringJoint2D>().connectedBody = rb;
+            }
+        }
     }
 
     public virtual void InitEntity()
@@ -47,6 +55,7 @@ public abstract class EntityInterpret : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         source = GetComponent<AudioSource>();
+        AttachJointToPreviousChain();
     }
 
     // Update is called once per frame
@@ -86,8 +95,10 @@ public abstract class EntityInterpret : MonoBehaviour {
                 anim.SetTrigger("Shoot");
                 StartCoroutine(AnimTimedShot(timeToFire));
             }
-            if (chainPart) {
-                chainPart.Fire();
+            if (nextChainList != null) {
+                for(int i = 0; i < nextChainList.Count; i++) {
+                    nextChainList[i].Fire();
+                }                
             }            
         }
     }
@@ -173,7 +184,6 @@ public abstract class EntityInterpret : MonoBehaviour {
 
     protected IEnumerator DamageFlash(int totalCycles)
     {
-        Debug.Log(totalCycles);
         int currentCycle = 0;
         isInvincible = true;
         while (currentCycle < totalCycles)

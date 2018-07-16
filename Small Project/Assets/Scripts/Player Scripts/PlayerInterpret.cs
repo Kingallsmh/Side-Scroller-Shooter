@@ -18,9 +18,11 @@ public class PlayerInterpret : EntityInterpret {
             if (Stats.IsDead())
             {
                 StartCoroutine(DeathAnimation(10, 0));
-                if (chainPart)
+                if (nextChainList != null)
                 {
-                    chainPart.InitDestruction();
+                    for (int i = 0; i < nextChainList.Count; i++) {
+                        nextChainList[i].InitDestruction();
+                    }
                 }
             }
             return true;
