@@ -22,11 +22,18 @@ public class ChainInterpret : EntityInterpret {
         box = GetComponentInChildren<HitBox>();
         Stats = GetComponent<ShipStats>();
         source = GetComponent<AudioSource>();
-        if (chainPart)
+        if (nextChainList != null && nextChainList.Count > 0)
         {
-            chainPart.PreviousChain = this;
-        }        
-    }
+            for (int i = 0; i < nextChainList.Count; i++) {
+                nextChainList[i].PreviousChain = this;
+            }
+            SetHitbox(false);
+        }
+        else {
+            SetHitbox(true);
+        }
+        AttachJointToPreviousChain();
+    }    
 
     public override void UpdateEntity()
     {
@@ -58,9 +65,10 @@ public class ChainInterpret : EntityInterpret {
             GameObject b = Instantiate(bulletPrefab);
             b.transform.position = muzzle.position;
         }
-        if (chainPart)
-        {
-            chainPart.Fire();
+        if (nextChainList != null) {
+            for (int i = 0; i < nextChainList.Count; i++) {
+                nextChainList[i].Fire();
+            }
         }
     }
 
@@ -83,16 +91,26 @@ public class ChainInterpret : EntityInterpret {
             yield return new WaitForSeconds(0.1f);                       
         }
         yield return new WaitForSeconds(soundTime - 0.1f);
-        if (previousChain)
-        {
-            previousChain.SetHitbox(true);
-        }
+        ChainLinkDestroyed();
         Destroy(gameObject);
+    }
+
+    public void ChainLinkDestroyed() {
+        if (previousChain) {
+            previousChain.nextChainList.Remove(this);
+            previousChain.SetHitbox(true);            
+        }        
     }
 
     public void SetHitbox(bool isDamagable)
     {
-        box.isDamagable = isDamagable;
+        if(nextChainList != null && nextChainList.Count > 0) {
+
+        }
+        else {
+            box.isDamagable = isDamagable;
+        }
+        
     }
 
     public void InitDestruction()
@@ -107,9 +125,10 @@ public class ChainInterpret : EntityInterpret {
         sprite.GetPropertyBlock(props);
         props.SetFloat("_FlashAmount", 1);
         sprite.SetPropertyBlock(props);
-        if (chainPart)
-        {
-            chainPart.InitDestruction();
+        if (nextChainList != null) {
+            for (int i = 0; i < nextChainList.Count; i++) {
+                nextChainList[i].InitDestruction();
+            }
         }
     }
 
