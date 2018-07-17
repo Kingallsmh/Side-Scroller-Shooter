@@ -11,6 +11,7 @@ TextureImporter:
     21300012: PlanetRipper_SmallAttach
     21300014: PlanetRipper_7
     21300016: PlanetRipper_8
+    21300018: PlanetRipper_Torso
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -228,6 +229,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 7ad49e3210fd68441b6623e551c09654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlanetRipper_Torso
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22bf889e4dc442b4b905a7ea0778f326
       vertices: []
       indices: 
       edges: []
