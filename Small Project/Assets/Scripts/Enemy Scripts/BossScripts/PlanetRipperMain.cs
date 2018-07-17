@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlanetRipperMain : MonoBehaviour {
 
+    public GameObject main
     public GameObject head;
     public List<Transform> chainList;
 
