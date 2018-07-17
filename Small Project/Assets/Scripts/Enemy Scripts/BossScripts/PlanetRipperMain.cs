@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class PlanetRipperMain : MonoBehaviour {
 
-    public GameObject main
+    public GameObject main;
     public GameObject head;
     public List<Transform> chainList;
 
+    public BossMode mode = BossMode.Idle;
+
+    public enum BossMode {
+        Idle, Roar
+    }
 
 	// Use this for initialization
 	void Start () {
         StartCoroutine(StartHeadIdle(0.2f));
 
+    }
+
+    IEnumerator AssessSituation() {
+        while (true) {
+            switch (mode) {
+                case BossMode.Idle:
+                    break;
+            }
+        }
     }
 
     IEnumerator StartHeadIdle(float delay) {
@@ -29,12 +43,17 @@ public class PlanetRipperMain : MonoBehaviour {
         float currentTime = 0;
         while (true) {
             while (currentTime < time) {
-                rb.velocity = direction * Time.deltaTime * speed * currentSpeed;
+                rb.velocity = direction * Time.deltaTime * speed * (currentSpeed - (currentSpeed * (currentTime/time)));
                 currentTime += Time.deltaTime;
                 yield return null;
             }
             currentSpeed = -currentSpeed;
             currentTime = 0;
         }        
+    }
+
+    IEnumerator RoarAbility() {
+        yield return new WaitForSeconds(0.5f);
+        head.GetComponent<Animator>();
     }
 }
