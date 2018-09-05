@@ -66,33 +66,57 @@ public class PhysicsObject : MonoBehaviour
     //    velocity = new Vector2(velocity.x, Mathf.Clamp(velocity.y, -maxYVelocity, maxYVelocity));
 
     //    Vector2 deltaPosition = velocity * Time.deltaTime;
-        
+
     //    Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
     //    Vector2 move = moveAlongGround * deltaPosition.x;
-        
+
     //    Movement(move, false);
 
     //    move = Vector2.up * deltaPosition.y;
 
     //    Movement(move, true);        
     //}
-
+    bool hasReset = false;
+    int frameCount = 0;
     void FixedUpdate()
     {
         if (unphysics)
         {
-            rb2d.velocity = Vector2.zero;
+            velocity = Vector2.zero;
             return;
         }
 
-        rb2d.velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
-        rb2d.velocity = new Vector2(targetVelocity.x, rb2d.velocity.y);
+        if (!hasReset)
+        {
+            if (FindNormalOfFloor() == Vector2.zero && targetVelocity.y <= 0)
+            {
+                velocity.y = 0;
+                hasReset = true;
+            }
+        }
+        else
+        {
+            if (FindNormalOfFloor() != Vector2.zero && targetVelocity.y <= 0)
+            {
+                hasReset = false;
+            }
+        }
+
+        if(targetVelocity.y > 0 && !hasReset)
+        {
+            velocity.y = 0;
+            hasReset = true;
+        }
+
+        velocity.y += targetVelocity.y;
+        velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+        velocity.x = targetVelocity.x;
 
         grounded = false;
-        rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Clamp(rb2d.velocity.y, -maxYVelocity, maxYVelocity));
+        velocity = new Vector2(velocity.x, Mathf.Clamp(velocity.y, -maxYVelocity, maxYVelocity));
 
-        Vector2 deltaPosition = rb2d.velocity * Time.deltaTime;
+        Vector2 deltaPosition = velocity * Time.deltaTime;
 
         Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
@@ -103,48 +127,85 @@ public class PhysicsObject : MonoBehaviour
         move = Vector2.up * deltaPosition.y;
 
         Movement(move, true);
+
+        
     }
 
+    Vector2 FindNormalOfFloor()
+    {
+        int count = rb2d.Cast(new Vector2(0, -1), contactFilter, hitBuffer, 0.5f + shellRadius);
+        Debug.DrawRay(rb2d.position, new Vector2(0, -1), Color.red, 0.5f + shellRadius);
+        hitBufferList.Clear();
+        for (int i = 0; i < count; i++)
+        {
+            hitBufferList.Add(hitBuffer[i]);
+        }
+
+        if(hitBufferList.Count == 1)
+        {
+            return hitBufferList[0].normal;
+        }
+        else
+        {
+            return Vector2.zero;
+        }
+    }
+
+    public Vector2 moveDebug;
+    bool groundedLastFrame = false;
     protected void Movement(Vector2 move, bool yMovement)
     {
         float distance = move.magnitude;
-
         if (distance > minMoveDistance)
         {
             int count = rb2d.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
+            //Debug.DrawRay(rb2d.position, move, Color.green, distance + shellRadius);
             hitBufferList.Clear();
             for (int i = 0; i < count; i++)
             {
                 hitBufferList.Add(hitBuffer[i]);
             }
-
+            
             for (int i = 0; i < hitBufferList.Count; i++)
             {
                 Vector2 currentNormal = hitBufferList[i].normal;
                 if (currentNormal.y > minGroundNormalY)
                 {
                     grounded = true;
+                    
                     if (yMovement)
                     {
                         groundNormal = currentNormal;
-                        currentNormal.x = 0;
+                        currentNormal.x = 0;                        
                     }
-                }
+                }   
 
-                float projection = Vector2.Dot(rb2d.velocity, currentNormal);
-                if (projection < 0)
+                float projection = Vector2.Dot(velocity, currentNormal);
+                moveDebug = velocity;
+                debugString = "Projection" +  projection;
+                if (projection < 0 && velocity.y > 0)
                 {
-                    rb2d.velocity = rb2d.velocity - projection * currentNormal;
+                    velocity = velocity - projection * currentNormal;
                 }
 
                 float modifiedDistance = hitBufferList[i].distance - shellRadius;
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
             }
-
-
+            if(hitBufferList.Count == 0)
+            {
+                groundNormal = new Vector2(0, 1);
+            }
         }
 
         rb2d.position = rb2d.position + move.normalized * distance;
+        if (grounded)
+        {
+            groundedLastFrame = true;
+        }
+        else
+        {
+            groundedLastFrame = false;
+        }
     }
 
 }

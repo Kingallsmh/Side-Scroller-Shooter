@@ -6,6 +6,7 @@ public class PilotInterpret : PhysicsObject {
 
     Animator animator;
     BaseController pc;
+    [Header("Pilot Public Variables")]
     public float maxSpeed = 7;
     public float boostSpeed = 2;
     public float maxVertSpeed = 10;
@@ -69,9 +70,9 @@ public class PilotInterpret : PhysicsObject {
 
     void JetpackBoost()
     {
-        if(rb2d.velocity.y < maxVertSpeed)
+        if(targetVelocity.y < maxVertSpeed)
         {
-            rb2d.velocity += new Vector2(0, boostSpeed) * Time.deltaTime * 10;
+            targetVelocity += new Vector2(0, boostSpeed) * Time.deltaTime * 10;
         }
         
     }
