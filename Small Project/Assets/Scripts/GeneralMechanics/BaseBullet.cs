@@ -12,7 +12,7 @@ public class BaseBullet : MonoBehaviour {
 
     public enum BulletType
     {
-        Standard, Penetrate, Bounce, Chain, Charge
+        Standard, Penetrate, Bounce, Chain, Charge, Stick
     }
 
 	// Use this for initialization
@@ -33,5 +33,11 @@ public class BaseBullet : MonoBehaviour {
     public void ChangeTag(string newTag)
     {
         gameObject.tag = newTag;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entered");
+        Destroy(gameObject);
     }
 }

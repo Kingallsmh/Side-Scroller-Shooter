@@ -11,6 +11,12 @@ public class PilotInterpret : PhysicsObject {
     public float boostSpeed = 2;
     public float maxVertSpeed = 10;
 
+    public Transform muzzle;
+    public GameObject bulletPrefab;
+    public float timeToFire = 0;
+    public float cooldownTime = 0.3f;
+    protected bool onCooldown = false;
+
     bool isBusy = false;
 
     //Test
@@ -30,6 +36,7 @@ public class PilotInterpret : PhysicsObject {
             //if (!GameManagerScript.Instance.PauseActions)
             //{
             pc.GatherInput();
+            ButtonPress();
             if (pc.GatherButton(0) && !isBusy) //Attack button
             {
                 JetpackBoost();
@@ -75,5 +82,39 @@ public class PilotInterpret : PhysicsObject {
             targetVelocity += new Vector2(0, boostSpeed) * Time.deltaTime * 10;
         }
         
+    }
+
+    void ButtonPress()
+    {
+        if (pc.GatherButton(1))
+        {
+            if (!onCooldown)
+            {
+                //animator.SetTrigger("Shoot");
+                StartCoroutine(AnimTimedShot(timeToFire));
+            }
+        }
+    }
+
+    IEnumerator CooldownTimerHandle()
+    {
+        onCooldown = true;
+        yield return new WaitForSeconds(cooldownTime);
+        onCooldown = false;
+    }
+
+    IEnumerator AnimTimedShot(float delay)
+    {
+        if (bulletPrefab)
+        {
+            StartCoroutine(CooldownTimerHandle());
+            yield return new WaitForSeconds(delay);
+            //float vol = Random.Range(volLowRange, volHighRange); For sound
+            //if (source)
+            //    source.PlayOneShot(bulletSound, vol);
+            GameObject b = Instantiate(bulletPrefab);
+            b.transform.localScale = transform.localScale;
+            b.transform.position = muzzle.position;
+        }
     }
 }

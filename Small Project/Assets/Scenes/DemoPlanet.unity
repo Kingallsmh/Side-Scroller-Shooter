@@ -8452,6 +8452,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 611448427}
+  - {fileID: 1537958388}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8512,13 +8513,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 0.7
-  maxYVelocity: 5.5
+  gravityModifier: 0.8
+  maxYVelocity: 7
   debugString: 
   moveDebug: {x: 0, y: 0}
   maxSpeed: 4
   boostSpeed: 2
   maxVertSpeed: 10
+  muzzle: {fileID: 1537958388}
+  bulletPrefab: {fileID: 1614848832681638, guid: 0e52c38f156ab2341a923a2dbfe50904,
+    type: 2}
+  timeToFire: 0
+  cooldownTime: 0.3
   debugSpeed: {x: 0, y: 0}
 --- !u!114 &1283600525
 MonoBehaviour:
@@ -8531,6 +8537,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47333590f3f515c4e9d7d8a840b8c8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1537958387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1537958388}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1537958388
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1537958387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.8, y: 1.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1283600521}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1663823334
 GameObject:
   m_ObjectHideFlags: 0
