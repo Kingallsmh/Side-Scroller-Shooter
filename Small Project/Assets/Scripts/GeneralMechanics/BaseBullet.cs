@@ -35,9 +35,8 @@ public class BaseBullet : MonoBehaviour {
         gameObject.tag = newTag;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Entered");
         Destroy(gameObject);
     }
 }
