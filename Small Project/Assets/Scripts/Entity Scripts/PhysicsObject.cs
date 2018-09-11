@@ -196,31 +196,44 @@ public class PhysicsObject : MonoBehaviour
         }
     }
 
+    Vector3 newVel;
     void StickywallUpdate()
     {
         if (unphysics)
         {
-            velocity = Vector2.zero;
+            newVel = Vector3.zero;
             return;
         }
-
         
-        velocity += gravityModifier * -groundNormal * Time.deltaTime;
+        //Cast downwards from character
+        Vector2 currentNormal = FindNormalOfFloor(-transform.up);
+        newVel.x = targetVelocity.x * Time.deltaTime * 100;        
+        newVel.y += -gravityModifier * 9.8f * Time.deltaTime;
+        newVel.y += targetVelocity.y;
+        newVel.x = Mathf.Clamp(newVel.x, -10, 10);
+        newVel.y = Mathf.Clamp(newVel.y, -maxYVelocity, maxYVelocity);
+        moveDebug = newVel;
+        Vector2 y = transform.up * newVel.y;
+        Vector2 x = transform.right * newVel.x;
         
-        velocity.y += targetVelocity.y;
+        rb2d.velocity = y + x;
         
-        velocity.x = targetVelocity.x;
+        //velocity += gravityModifier * -groundNormal * Time.deltaTime;
+        
+        //velocity.y += targetVelocity.y;
+        
+        //velocity.x = targetVelocity.x;
 
-        grounded = false;
-        velocity = new Vector2(velocity.x, Mathf.Clamp(velocity.y, -maxYVelocity, maxYVelocity));
+        //grounded = false;
+        //velocity = new Vector2(velocity.x, Mathf.Clamp(velocity.y, -maxYVelocity, maxYVelocity));
 
-        Vector2 deltaPosition = velocity * Time.deltaTime;
+        //Vector2 deltaPosition = velocity * Time.deltaTime;
 
-        Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
+        //Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
-        Vector2 move = moveAlongGround * deltaPosition;
+        //Vector2 move = moveAlongGround * deltaPosition;
 
-        Movement2(move, false);
+        //Movement2(move, false);
     }
 
     protected void Movement2(Vector2 move, bool yMovement)
@@ -251,10 +264,10 @@ public class PhysicsObject : MonoBehaviour
         rb2d.position = rb2d.position + move.normalized * distance;
     }
 
-    Vector2 FindNormalOfFloor(Vector2 normal)
+    Vector2 FindNormalOfFloor(Vector2 castDirection)
     {
-        int count = rb2d.Cast(-normal, contactFilter, hitBuffer, 0.5f + shellRadius);
-        Debug.DrawRay(rb2d.position, new Vector2(0, -1), Color.red, 0.5f + shellRadius);
+        int count = rb2d.Cast(castDirection, contactFilter, hitBuffer, 0.5f + shellRadius);
+        Debug.DrawRay(rb2d.position, castDirection, Color.red, 0.5f + shellRadius);
         hitBufferList.Clear();
         for (int i = 0; i < count; i++)
         {
