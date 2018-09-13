@@ -18,7 +18,9 @@ public class MonsterScript : PhysicsObject {
     void Start () {
         controller = GetComponent<BaseController>();
         animator = GetComponent<Animator>();
-	}
+        StartObject();
+
+    }
 
     protected override void ComputeVelocity()
     {

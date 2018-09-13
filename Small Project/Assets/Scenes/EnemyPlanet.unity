@@ -216,7 +216,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 322437260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MetroidWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 499739030}
   - component: {fileID: 499739031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 666737742}
   - component: {fileID: 666737743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MetroidCompleateMapBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,11 +376,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4103790498601648, guid: 29f8048faeb647647a730735acf7d4e1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9.547539
+      value: 6.8
       objectReference: {fileID: 0}
     - target: {fileID: 4103790498601648, guid: 29f8048faeb647647a730735acf7d4e1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.8663814
+      value: -1.46
       objectReference: {fileID: 0}
     - target: {fileID: 4103790498601648, guid: 29f8048faeb647647a730735acf7d4e1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -411,6 +411,19 @@ Prefab:
       propertyPath: moveType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4103790498601648, guid: 29f8048faeb647647a730735acf7d4e1, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454394810455774, guid: 29f8048faeb647647a730735acf7d4e1, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286893972461830, guid: 29f8048faeb647647a730735acf7d4e1,
+        type: 2}
+      propertyPath: stickyLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29f8048faeb647647a730735acf7d4e1, type: 2}
   m_IsPrefabParent: 0
@@ -428,7 +441,7 @@ GameObject:
   - component: {fileID: 1768530435}
   - component: {fileID: 1768530434}
   - component: {fileID: 1768530433}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

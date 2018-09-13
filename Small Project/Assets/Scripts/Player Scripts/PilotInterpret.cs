@@ -24,6 +24,7 @@ public class PilotInterpret : PhysicsObject {
 
     // Use this for initialization
     void Start () {
+        StartObject();
         pc = GetComponent<BaseController>();
         animator = GetComponent<Animator>();
         StartCoroutine(InterpretInput());
