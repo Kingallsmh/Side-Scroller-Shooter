@@ -24,6 +24,7 @@ public class MonsterScript : PhysicsObject {
 
     protected override void ComputeVelocity()
     {
+        controller.GatherInput();
         if (!isBusy)
         {
             targetVelocity = new Vector2(controller.GetDirectionInput(0).x * maxSpeed, 0);

@@ -176,15 +176,18 @@ public class PhysicsObject : MonoBehaviour {
 
         //Cast downwards from character
         RaycastHit2D currentHit = FindNormalOfFloorSticky();
-        if (currentHit) {
+        if (currentHit && targetVelocity.y == 0) {
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, currentHit.normal);
             transform.rotation = Quaternion.Euler(0, 0, rot.eulerAngles.z);
             Vector2 yAdjust = transform.up * boxExtents.y;
             transform.position = currentHit.point;
-            newVel.y = 0;
+            newVel.y = Mathf.Clamp(newVel.y, -1, 1);
+            moveDebug = newVel;
         }
         else {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            if(transform.rotation != Quaternion.Euler(Vector3.zero)) {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(Vector3.zero), 10);                
+            }            
         }
 
 
@@ -269,7 +272,7 @@ public class PhysicsObject : MonoBehaviour {
         if(Physics2D.Raycast(forwardRay.origin, forwardRay.direction, stickyFilter, forwardHit, x) > 0) {            
             return forwardHit[0];
         }
-        if(Physics2D.Raycast(centerRay.origin, centerRay.direction, stickyFilter, forwardHit, boxExtents.y+0.2f) > 0) {
+        if(Physics2D.Raycast(centerRay.origin, centerRay.direction, stickyFilter, forwardHit, boxExtents.y+0.4f) > 0) {
             return forwardHit[0];
         }
 
