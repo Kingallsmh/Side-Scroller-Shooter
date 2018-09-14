@@ -272,7 +272,16 @@ public class PhysicsObject : MonoBehaviour {
         if(Physics2D.Raycast(forwardRay.origin, forwardRay.direction, stickyFilter, forwardHit, x) > 0) {            
             return forwardHit[0];
         }
-        if(Physics2D.Raycast(centerRay.origin, centerRay.direction, stickyFilter, forwardHit, boxExtents.y+0.4f) > 0) {
+        RaycastHit2D[] forwardHit2 = new RaycastHit2D[2];
+        if (Physics2D.Raycast(leftRay.origin, leftRay.direction, stickyFilter, forwardHit, boxExtents.y+0.4f) > 0 && Physics2D.Raycast(rightRay.origin, rightRay.direction, stickyFilter, forwardHit2, boxExtents.y + 0.4f) > 0) {
+            Vector2 avgNorm = (forwardHit[0].normal + forwardHit2[0].normal) / 2;
+            Vector2 avgPos = (forwardHit[0].point + forwardHit2[0].point) / 2;
+            RaycastHit2D newRay = new RaycastHit2D();
+            newRay.normal = avgNorm;
+            newRay.point = avgPos;
+            return newRay;
+        }
+        if(Physics2D.Raycast(centerRay.origin, centerRay.direction, stickyFilter, forwardHit, boxExtents.y + 0.5f) > 0) {
             return forwardHit[0];
         }
 
