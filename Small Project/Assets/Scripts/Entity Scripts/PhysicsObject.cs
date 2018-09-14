@@ -26,7 +26,7 @@ public class PhysicsObject : MonoBehaviour {
     public string debugString;
 
     public enum MoveType {
-        Pilot, WallStick
+        Pilot, WallStick, Float
     }
 
     public void StartObject() {
@@ -55,6 +55,8 @@ public class PhysicsObject : MonoBehaviour {
             case MoveType.Pilot: PilotUpdate();
                 break;
             case MoveType.WallStick: StickywallUpdate();
+                break;
+            case MoveType.Float: FloatMovementUpdate();
                 break;
         }
     }
@@ -201,23 +203,6 @@ public class PhysicsObject : MonoBehaviour {
         Vector2 x = transform.right * newVel.x;
 
         rb2d.velocity = y + x;
-
-        //velocity += gravityModifier * -groundNormal * Time.deltaTime;
-
-        //velocity.y += targetVelocity.y;
-
-        //velocity.x = targetVelocity.x;
-
-        //grounded = false;
-        //velocity = new Vector2(velocity.x, Mathf.Clamp(velocity.y, -maxYVelocity, maxYVelocity));
-
-        //Vector2 deltaPosition = velocity * Time.deltaTime;
-
-        //Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
-
-        //Vector2 move = moveAlongGround * deltaPosition;
-
-        //Movement2(move, false);
     }
 
     protected void Movement2(Vector2 move, bool yMovement) {
@@ -284,25 +269,14 @@ public class PhysicsObject : MonoBehaviour {
         if(Physics2D.Raycast(centerRay.origin, centerRay.direction, stickyFilter, forwardHit, boxExtents.y + 0.5f) > 0) {
             return forwardHit[0];
         }
-
-        //return Physics.Raycast(leftRay, out leftHitInfo, rayLength, DefaultTerrainLayerMask) && Physics.Raycast(rightRay, out rightHitInfo, rayLength, DefaultTerrainLayerMask);
-
-        ////&&&&&
-        //int count = rb2d.Cast(castDirection, contactFilter, hitBuffer, 0.5f + shellRadius);
-        //Debug.DrawRay(rb2d.position, castDirection, Color.red, 0.5f + shellRadius);
-        //hitBufferList.Clear();
-        //for (int i = 0; i < count; i++)
-        //{
-        //    hitBufferList.Add(hitBuffer[i]);
-        //}
-
-        //if (hitBufferList.Count == 1)
-        //{
-        //    return hitBufferList[0].normal;
-        //}
-        //else
-        //{
         return forwardHit[0];
-        //}
+    }
+
+    void FloatMovementUpdate() {
+        newVel = targetVelocity * Time.deltaTime * 100;
+        newVel.x = Mathf.Clamp(newVel.x, -maxYVelocity, maxYVelocity);
+        newVel.y = Mathf.Clamp(newVel.y, -maxYVelocity, maxYVelocity);
+
+        rb2d.velocity = newVel;
     }
 }
