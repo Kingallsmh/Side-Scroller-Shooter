@@ -27,7 +27,15 @@ public class MonsterScript : PhysicsObject {
         controller.GatherInput();
         if (!isBusy)
         {
-            targetVelocity = new Vector2(controller.GetDirectionInput(0).x * maxSpeed, 0);
+            if(moveType != MoveType.Float)
+            {
+                targetVelocity = new Vector2(controller.GetDirectionInput(0).x * maxSpeed, 0);
+            }
+            else
+            {
+                targetVelocity = new Vector2(controller.GetDirectionInput(0).x * maxSpeed, controller.GetDirectionInput(0).y * maxSpeed);
+            }
+            
         }
         if (targetVelocity.x > 0)
         {

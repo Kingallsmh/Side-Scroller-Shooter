@@ -273,7 +273,7 @@ public class PhysicsObject : MonoBehaviour {
     }
 
     void FloatMovementUpdate() {
-        newVel = targetVelocity * Time.deltaTime * 100;
+        newVel = newVel + (Vector3)(targetVelocity * Time.deltaTime);
         newVel.x = Mathf.Clamp(newVel.x, -maxYVelocity, maxYVelocity);
         newVel.y = Mathf.Clamp(newVel.y, -maxYVelocity, maxYVelocity);
 
