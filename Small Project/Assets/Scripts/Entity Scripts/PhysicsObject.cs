@@ -273,7 +273,26 @@ public class PhysicsObject : MonoBehaviour {
     }
 
     void FloatMovementUpdate() {
-        newVel = newVel + (Vector3)(targetVelocity * Time.deltaTime);
+        newVel = rb2d.velocity + (targetVelocity * Time.deltaTime);
+        
+        if(newVel.x > 0)
+        {
+            newVel.x -= gravityModifier;
+        }
+        else if(newVel.x < 0)
+        {
+            newVel.x += gravityModifier;
+        }
+
+        if(newVel.y > 0)
+        {
+            newVel.y -= gravityModifier;
+        }
+        else if(newVel.y < 0)
+        {
+            newVel.y += gravityModifier;
+        }
+
         newVel.x = Mathf.Clamp(newVel.x, -maxYVelocity, maxYVelocity);
         newVel.y = Mathf.Clamp(newVel.y, -maxYVelocity, maxYVelocity);
 

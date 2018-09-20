@@ -19,7 +19,7 @@ public class HitBox : MonoBehaviour {
                 Destroy(bullet.gameObject);
             }
             //Check for interpret. If none, exit.
-            EntityInterpret interpret = gameObject.GetComponent<Collider2D>().attachedRigidbody.GetComponent<EntityInterpret>();
+            ShipStats interpret = gameObject.GetComponent<Collider2D>().attachedRigidbody.GetComponent<ShipStats>();
             if (!interpret)
             {
                 return;
@@ -28,13 +28,13 @@ public class HitBox : MonoBehaviour {
             HitBox box = collision.gameObject.GetComponent<HitBox>();
             if (box && box.canDamage && isDamagable)
             {
-                interpret.TakeDamage(1);
+                interpret.AdjustHealth(-1);
                 return;
             }
             
-            if(bullet && isDamagable && !interpret.Stats.IsDead())
+            if(bullet && isDamagable && !interpret.IsDead())
             {
-                interpret.TakeDamage(bullet.dmg);
+                interpret.AdjustHealth(-bullet.dmg);
                 Destroy(bullet.gameObject);
                 return;
             }
