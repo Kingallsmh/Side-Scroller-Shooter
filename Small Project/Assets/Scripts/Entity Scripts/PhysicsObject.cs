@@ -298,4 +298,25 @@ public class PhysicsObject : MonoBehaviour {
 
         rb2d.velocity = newVel;
     }
+
+    public Vector3 GetPointInColliders() {
+
+        Collider2D[] colList = new Collider2D[rb2d.attachedColliderCount];
+        int numOFCols = rb2d.GetAttachedColliders(colList);
+        if (numOFCols > 1) {
+            int ranNum = Random.Range(0, numOFCols);
+            float xWidth = colList[ranNum].bounds.extents.x;
+            float yWidth = colList[ranNum].bounds.extents.y;
+            float x = Random.Range(-xWidth, xWidth);
+            float y = Random.Range(-yWidth, yWidth);
+            return new Vector3(colList[ranNum].transform.position.x + x, colList[ranNum].transform.position.y + y);
+        }
+        else {
+            float xWidth = colList[0].bounds.extents.x;
+            float yWidth = colList[0].bounds.extents.y;
+            float x = Random.Range(-xWidth, xWidth);
+            float y = Random.Range(-yWidth, yWidth);
+            return new Vector3(colList[0].transform.position.x + x, colList[0].transform.position.y + y);
+        }
+    }
 }

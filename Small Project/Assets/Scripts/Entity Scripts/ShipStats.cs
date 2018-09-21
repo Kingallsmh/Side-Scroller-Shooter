@@ -11,9 +11,11 @@ public class ShipStats : MonoBehaviour {
 
     public SpriteRenderer sprite;
     protected MaterialPropertyBlock props;
+    PhysicsObject physicsObject;
 
     private void Start()
     {
+        physicsObject = GetComponent<PhysicsObject>();
         props = new MaterialPropertyBlock();
         Hp = MaxHp;    
     }
@@ -22,7 +24,15 @@ public class ShipStats : MonoBehaviour {
     {
         Hp += amount;
         Mathf.Clamp(Hp, 0, MaxHp);
-        StartCoroutine(DamageFlash(5));
+        if (!IsDead()) {
+            StartCoroutine(DamageFlash(2));
+        }
+        else {
+            sprite.GetPropertyBlock(props);
+            props.SetFloat("_FlashAmount", 1);
+            sprite.SetPropertyBlock(props);
+            StartCoroutine(DeathAnimation(4, 0));
+        }
     }
 
     public bool IsDead()
@@ -53,12 +63,25 @@ public class ShipStats : MonoBehaviour {
         if (!IsDead())
         {
             isInvincible = false;
-        }
-        else
-        {
-            sprite.GetPropertyBlock(props);
-            props.SetFloat("_FlashAmount", 1);
-            sprite.SetPropertyBlock(props);
-        }
+        }        
     }
+
+    protected virtual IEnumerator DeathAnimation(int totalCycles, int explodeNum) {
+        int currentCycle = 0;
+        isInvincible = true;
+        //controllerPaused = true;
+
+        float soundTime = 0;
+        while (currentCycle < totalCycles) {
+            Vector3 boomPoint = physicsObject.GetPointInColliders();
+            soundTime = EffectsManagerScript.Instance.PlayExplode(boomPoint, explodeNum);
+            currentCycle++;
+            yield return new WaitForSeconds(soundTime);
+        }
+        yield return new WaitForSeconds(0.1f);
+
+        Destroy(gameObject);
+    }
+
+    
 }
