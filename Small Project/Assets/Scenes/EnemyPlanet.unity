@@ -3073,6 +3073,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 61904717491157376, guid: 29f8048faeb647647a730735acf7d4e1,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29f8048faeb647647a730735acf7d4e1, type: 2}
   m_IsPrefabParent: 0
@@ -3761,3 +3766,44 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 857450d8e6b6b254d8f2c4ed8c062344, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1836833779 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1454394810455774, guid: 29f8048faeb647647a730735acf7d4e1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1655922217}
+--- !u!114 &1836833786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1836833779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422120763945b6049b96b86b62a169db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDamage: 0
+  isDamagable: 1
+  isBlocker: 0
+  tagToIgnore: Player
+--- !u!114 &1836833787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1836833779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335ba10f5b25f9f49b405b3bf4a520cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 3
+  MaxHp: 3
+  Atk: 1
+  invincibleTime: 5
+  sprite: {fileID: 2062811599}
+--- !u!212 &2062811599 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212414912329702110, guid: 29f8048faeb647647a730735acf7d4e1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1655922217}

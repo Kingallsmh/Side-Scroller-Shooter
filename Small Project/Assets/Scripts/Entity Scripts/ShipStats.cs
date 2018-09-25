@@ -7,6 +7,7 @@ public class ShipStats : MonoBehaviour {
     public int Hp = 1;
     public int MaxHp = 1;
     public int Atk = 1;
+    public int invincibleTime = 1;
     bool isInvincible = false;
 
     public SpriteRenderer sprite;
@@ -22,17 +23,21 @@ public class ShipStats : MonoBehaviour {
 
     public void AdjustHealth(int amount)
     {
-        Hp += amount;
-        Mathf.Clamp(Hp, 0, MaxHp);
-        if (!IsDead()) {
-            StartCoroutine(DamageFlash(2));
+        if (!isInvincible)
+        {
+            Hp += amount;
+            Mathf.Clamp(Hp, 0, MaxHp);
+            if (!IsDead()) {
+                StartCoroutine(DamageFlash(invincibleTime));
+            }
+            else {
+                sprite.GetPropertyBlock(props);
+                props.SetFloat("_FlashAmount", 1);
+                sprite.SetPropertyBlock(props);
+                StartCoroutine(DeathAnimation(4, 0));
+            }
         }
-        else {
-            sprite.GetPropertyBlock(props);
-            props.SetFloat("_FlashAmount", 1);
-            sprite.SetPropertyBlock(props);
-            StartCoroutine(DeathAnimation(4, 0));
-        }
+        
     }
 
     public bool IsDead()
