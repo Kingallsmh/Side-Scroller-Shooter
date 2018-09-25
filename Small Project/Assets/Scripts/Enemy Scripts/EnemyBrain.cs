@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemyBrain : MonoBehaviour {
 
     EnemyController controller;
-    MonsterScript monster;
+    MonsterScript monster;    
+
+    public GameObject target;
 
 	// Use this for initialization
 	void Start () {
@@ -52,5 +54,12 @@ public class EnemyBrain : MonoBehaviour {
     {
         controller.SetInputDirection(0, Vector2.zero);
         yield return new WaitForSeconds(time);
+    }
+
+    IEnumerator HeadToTarget() {
+        if(target != null) {
+            Vector2 move = target.transform.position - monster.transform.position;
+        }
+        yield return null;
     }
 }
