@@ -205,7 +205,7 @@ public class PhysicsObject : MonoBehaviour {
         rb2d.velocity = y + x;
     }
 
-    protected void Movement2(Vector2 move, bool yMovement) {
+    protected void Movement2(Vector2 move) {
         float distance = move.magnitude;
         if (distance > minMoveDistance) {
             int count = rb2d.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
