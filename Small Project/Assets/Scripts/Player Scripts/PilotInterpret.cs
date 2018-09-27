@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PilotInterpret : PhysicsObject {
 
+    [Header("Pilot Image Variables")]
+    public Sprite[] animSprites;
+
     Animator animator;
     BaseController pc;
+    public SpriteRenderer spriter;
     [Header("Pilot Public Variables")]
     public float maxSpeed = 7;
     public float boostSpeed = 2;
@@ -117,5 +121,11 @@ public class PilotInterpret : PhysicsObject {
             b.transform.localScale = transform.localScale;
             b.transform.position = muzzle.position;
         }
+    }
+
+    //For use in the mecanim animator
+    public void ChangeAnimationSprite(int num)
+    {
+        spriter.sprite = animSprites[num];
     }
 }

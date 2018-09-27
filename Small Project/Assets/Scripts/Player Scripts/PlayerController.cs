@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class PlayerController : BaseController {
 
+    public int playerNum;
+
     // Update is called once per frame
     public override void GatherInput() {
-        directionInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        btn0 = Input.GetButton("Jump");
-        btn1 = Input.GetButton("Button1");
-        btn2 = Input.GetButton("Button2");
-        btn3 = Input.GetButton("Button3");
+        if(playerNum == 1)
+        {
+            directionInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            btn0 = Input.GetButton("Jump");
+            btn1 = Input.GetButton("Button1");
+            btn2 = Input.GetButton("Button2");
+            btn3 = Input.GetButton("Button3");
+        }
+        if(playerNum == 2)
+        {
+            directionInput = new Vector2(Input.GetAxisRaw("2Horizontal"), Input.GetAxisRaw("2Vertical"));
+            btn0 = Input.GetButton("2Jump");
+            btn1 = Input.GetButton("2Button1");
+            btn2 = Input.GetButton("2Button2");
+            btn3 = Input.GetButton("2Button3");
+        }
     }
 
     public override Vector2 GetDirectionInput(int numOfInput) {
