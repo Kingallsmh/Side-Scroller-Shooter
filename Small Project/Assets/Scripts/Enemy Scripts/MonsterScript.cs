@@ -6,6 +6,7 @@ public class MonsterScript : PhysicsObject {
 
     BaseController controller;
     Animator animator;
+    Transform myTransform;
 
     [Header("Monster Public Variables")]
     public float maxSpeed = 7;
@@ -16,6 +17,7 @@ public class MonsterScript : PhysicsObject {
 
     // Use this for initialization
     void Start () {
+        myTransform = transform;
         controller = GetComponent<BaseController>();
         animator = GetComponent<Animator>();
         StartObject();

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4207094465697060}
   - component: {fileID: 212927282094402586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 50839720494245016}
   - component: {fileID: 114907293811709666}
   - component: {fileID: 61560375142348322}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pilot Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
