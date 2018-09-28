@@ -32,7 +32,8 @@ public class PilotInterpret : PhysicsObject {
         pc = GetComponent<BaseController>();
         animator = GetComponent<Animator>();
         StartCoroutine(InterpretInput());
-	}
+        spriter.sprite = animSprites[2];
+    }
 
     public IEnumerator InterpretInput()
     {
